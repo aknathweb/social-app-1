@@ -1,12 +1,12 @@
 import React from 'react';
+import PopularPost from './PopularPost';
 import Post from './Post';
-import PostCard from './PostCard';
 
 const Home = () => {
     return (
         <div>
             <Post></Post>
-            <PostCard></PostCard>
+            <PopularPost></PopularPost>
         </div>
     );
 };

@@ -4,7 +4,9 @@ const Post = () => {
     return (
         <div className='my-4'>
             <form className="bg-white shadow rounded-lg mb-6 p-4 w-full md:w-3/4 lg:w-1/2 mx-auto">
-                <textarea name="message" placeholder="Type something..." className=" focus:outline-none  w-full rounded-lg p-2 text-sm bg-gray-100 border border-transparent appearance-none rounded-tg placeholder-gray-400"></textarea>
+                <textarea name="message" placeholder="Type something..." className=" focus:outline-none  w-full rounded-lg p-2 text-sm bg-gray-100 border border-transparent appearance-none rounded-tg placeholder-gray-400">
+
+                </textarea>
                 <footer className="flex justify-between mt-2">
                     <div className="flex gap-2">
                         <span className="flex items-center transition ease-out duration-300 hover:bg-blue-500 hover:text-white bg-blue-100 w-8 h-8 px-2 rounded-full text-blue-400 cursor-pointer">
