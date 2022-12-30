@@ -6,10 +6,16 @@ import PostComment from './PostComment';
 const PostDetails = () => {
     const postId = useLoaderData();
     const [post, setPost] = useState({})
+    const [comments, setComments] = useState([])
     const { _id, email, name, message, imageUrl, postTime, posterPhoto } = post;
     console.log(post);
     useEffect(() => {
         fetch(`http://localhost:5000/post/${postId}`).then(res => res.json()).then(data => setPost(data)).catch(err => console.log(err));
+
+    }, [])
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/comments/${postId}`).then(res => res.json()).then(data => setComments(data)).catch(err => console.log(err));
     }, [])
 
     return (
@@ -42,11 +48,10 @@ const PostDetails = () => {
             <div className='bg-slate-200 p-4 rounded-md'>
                 <PostComment postId={_id}></PostComment>
                 <div>
-                    <Comment></Comment>
-                    <Comment></Comment>
-                    <Comment></Comment>
-                    <Comment></Comment>
-                    <Comment></Comment>
+                    {
+                        comments.map((comment, i) => <Comment key={i} postId={comment.postId} commenterName={comment.commenterName} commenterEmail={comment.commenterEmail} commenterPhoto={comment.commenterPhoto} comment={comment.comment} commentTime={comment.commentTime}></Comment>)
+                    }
+
                 </div>
             </div>
         </div>
