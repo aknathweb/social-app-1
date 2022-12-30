@@ -40,7 +40,7 @@ const PostDetails = () => {
                 />
             </div>
             <div className='bg-slate-200 p-4 rounded-md'>
-                <PostComment></PostComment>
+                <PostComment postId={_id}></PostComment>
                 <div>
                     <Comment></Comment>
                     <Comment></Comment>

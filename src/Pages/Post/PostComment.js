@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
+import { AuthContext } from '../../ContestApi/AuthContextProvider';
 
-const PostComment = () => {
+const PostComment = ({ postId }) => {
+    const { user } = useContext(AuthContext);
+    const handleComment = (e) => {
+        e.preventDefault();
+        const commenterName = user.displayName;
+        const commenterEmail = user.email;
+        const commenterPhoto = user.photoURL;
+        const comment = e.target.comment.value;
+        fetch('http://localhost:5000/post/comment', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ postId, commenterName, commenterEmail, commenterPhoto, comment })
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('CommentPosted successfully')
+                e.target.reset();
+                if (data.acknowledged) {
+                    ;
+                }
+            })
+        // console.log(name, email, message, photo)
+    }
     return (
         <div>
             <div className='my-4'>
-                <form className="bg-white shadow rounded-lg mb-6 p-4 w-full mx-auto">
-                    <textarea name="message" placeholder="Type something..." className=" focus:outline-none  w-full rounded-lg p-2 text-sm bg-gray-100 border border-transparent appearance-none rounded-tg placeholder-gray-400">
+                <form onSubmit={handleComment} className="bg-white shadow rounded-lg mb-6 p-4 w-full mx-auto">
+                    <textarea name="comment" placeholder="Type something..." className=" focus:outline-none  w-full rounded-lg p-2 text-sm bg-gray-100 border border-transparent appearance-none rounded-tg placeholder-gray-400">
 
                     </textarea>
                     <footer className="flex justify-between mt-2">
