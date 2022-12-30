@@ -1,35 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PostCard = () => {
+const PostCard = ({ postId, email, name, message, postImage, postTime, posterPhoto }) => {
     return (
         <div>
             <div className="overflow-hidden transition-shadow duration-300 bg-slate-200 rounded my-4 shadow-lg">
                 <div className='flex p-2'>
-                    <div className="avatar">
-                        <div className="w-16 rounded-full">
-                            <img src="https://placeimg.com/192/192/people" alt='imga' />
+                    {
+                        <div className="avatar">
+                            <div className="w-16 rounded-full">
+                                <img src={posterPhoto ? posterPhoto : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png'} alt='image' />
+                            </div>
                         </div>
-                    </div>
+                    }
                     <div className='px-2'>
-                        <p className="text-2xl font-bold ">Anik Kumar Nath</p>
+                        <p className="text-2xl font-bold ">{name}</p>
                         <p className="text-base font-semibold text-gray-600 uppercase">
-                            13 Jul 2020
+                            {postTime}
                         </p>
                     </div>
                 </div>
                 <div className="p-4">
                     <p className="mb-4 text-gray-700">
-                        Sed ut perspiciatis unde omnis iste natus error sit sed quia
-                        consequuntur magni voluptatem doloremque.
+                        {message?.length > 100 ? message.slice(0, 90) + '...' : message}
                     </p>
                 </div>
                 <div>
-                    <img
-                        src="https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
-                        className="object-cover w-full h-64 rounded"
-                        alt=""
-                    />
+                    {
+                        posterPhoto && <img
+                            src={postImage}
+                            className="object-cover w-full h-64 rounded"
+                            alt=""
+                        />
+                    }
                 </div>
                 <div className='p-2'>
                     <div className="flex space-x-4 justify-between items-center">
