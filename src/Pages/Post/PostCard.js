@@ -93,7 +93,7 @@ const PostCard = ({ postId, email, name, message, postImage, postTime, posterPho
                             <p className="font-semibold">81</p>
                         </div>
                         <div>
-                            <Link to={'/post/details'} className="text-primary btn btn-ghost">
+                            <Link to={`/post/${postId}`} className="text-primary btn btn-ghost">
                                 see more
                             </Link>
                         </div>

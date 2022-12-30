@@ -27,7 +27,8 @@ export const Routes = createBrowserRouter([
                 element: <Profile></Profile>,
             },
             {
-                path: '/post/details',
+                path: '/post/:id',
+                loader: ({ params }) => params.id,
                 element: <PostDetails></PostDetails>,
             },
             {

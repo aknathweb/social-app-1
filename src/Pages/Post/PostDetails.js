@@ -1,31 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import Comment from './Comment';
 import PostComment from './PostComment';
 
 const PostDetails = () => {
+    const postId = useLoaderData();
+    const [post, setPost] = useState({})
+    const { _id, email, name, message, imageUrl, postTime, posterPhoto } = post;
+    console.log(post);
+    useEffect(() => {
+        fetch(`http://localhost:5000/post/${postId}`).then(res => res.json()).then(data => setPost(data)).catch(err => console.log(err));
+    }, [])
+
     return (
-        <div className='w-full md:w-3/4 lg:w-2/3 p-4 mx-auto'>
+        <div className='w-full md:w-3/4 lg:w-2/3 p-4 mx-auto shadow-md rounded-md'>
             <div className='flex p-2'>
                 <div className="avatar">
                     <div className="w-16 rounded-full">
-                        <img src="https://placeimg.com/192/192/people" alt='imga' />
+                        <img src={posterPhoto ? posterPhoto : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png'} alt='image' />
                     </div>
                 </div>
                 <div className='px-2'>
-                    <p className="text-2xl font-bold ">Anik Kumar Nath</p>
+                    <p className="text-2xl font-bold ">{name}</p>
                     <p className="text-base font-semibold text-gray-600 uppercase">
-                        13 Jul 2020
+                        {postTime}
                     </p>
                 </div>
             </div>
             <div className="p-4">
                 <p className="mb-4 text-gray-700">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A, ex nam non nesciunt nihil aperiam quisquam architecto porro fugit ducimus dolores quaerat officiis placeat nulla? Tempora excepturi officia perspiciatis magnam.
+                    {message}
                 </p>
             </div>
-            <div>
+            <div className='flex justify-center'>
                 <img
-                    src="https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
+                    src={imageUrl}
                     className="object-cover rounded"
                     alt=""
                 />
