@@ -1,11 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import { app } from '../Firebase/Firebase.config';
+import app from '../Firebase/Firebase.config';
 
 export const AuthContext = createContext();
-const auth = getAuth(app)
+const auth = getAuth(app);
 const AuthContextProvider = ({ children }) => {
-
     const [user, setUser] = useState();
     const [loading, setLoading] = useState(true);
 
@@ -28,8 +27,8 @@ const AuthContextProvider = ({ children }) => {
     }
 
 
-    const updateUserProfile = (profile) => {
-        return updateProfile(auth.currentUser, profile)
+    const updateUserProfile = (name, photoURL) => {
+        return updateProfile(auth.currentUser, { displayName: name, photoURL: photoURL })
     }
 
     useEffect(() => {

@@ -3,7 +3,7 @@ import React from 'react';
 const Comment = () => {
     return (
         <div>
-            <div className='flex p-2'>
+            <div className='flex p-2 bg-slate-100 rounded-md my-2'>
                 <div className="avatar">
                     <div className="w-16 h-16 rounded-full">
                         <img src="https://placeimg.com/192/192/people" alt='imga' />

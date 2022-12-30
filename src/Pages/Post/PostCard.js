@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const PostCard = () => {
     return (
         <div>
-            <div className="overflow-hidden transition-shadow duration-300 bg-slate-100 rounded">
+            <div className="overflow-hidden transition-shadow duration-300 bg-slate-200 rounded my-4 shadow-lg">
                 <div className='flex p-2'>
                     <div className="avatar">
                         <div className="w-16 rounded-full">

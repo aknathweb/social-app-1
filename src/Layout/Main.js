@@ -9,7 +9,9 @@ const Main = () => {
             <div className='bg-slate-100'>
                 <Header></Header>
             </div>
-            <Outlet></Outlet>
+            <div className='bg-purple-50'>
+                <Outlet></Outlet>
+            </div>
             <hr />
             <div className='bg-slate-100'>
                 <Footer></Footer>

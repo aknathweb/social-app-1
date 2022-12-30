@@ -4,7 +4,7 @@ import PostComment from './PostComment';
 
 const PostDetails = () => {
     return (
-        <div className='w-full md:w-3/4 lg:w-2/3 my-4 mx-auto p-4'>
+        <div className='w-full md:w-3/4 lg:w-2/3 p-4 mx-auto'>
             <div className='flex p-2'>
                 <div className="avatar">
                     <div className="w-16 rounded-full">
@@ -30,13 +30,15 @@ const PostDetails = () => {
                     alt=""
                 />
             </div>
-            <PostComment></PostComment>
-            <div>
-                <Comment></Comment>
-                <Comment></Comment>
-                <Comment></Comment>
-                <Comment></Comment>
-                <Comment></Comment>
+            <div className='bg-slate-200 p-4 rounded-md'>
+                <PostComment></PostComment>
+                <div>
+                    <Comment></Comment>
+                    <Comment></Comment>
+                    <Comment></Comment>
+                    <Comment></Comment>
+                    <Comment></Comment>
+                </div>
             </div>
         </div>
     );
